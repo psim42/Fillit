@@ -6,7 +6,7 @@
 #    By: fwerner <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:25:16 by fwerner           #+#    #+#              #
-#    Updated: 2018/11/29 13:50:27 by fwerner          ###   ########.fr        #
+#    Updated: 2018/11/29 16:11:04 by psim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,8 @@ SRCS_BASE = ft_memset.c \
 			ft_lstallocnew.c \
 			ft_lststrjoin.c \
 			ft_deflstdel.c \
-			get_next_line.c
+			get_next_line.c \
+			ft_print_params.c
 SRCS = $(addprefix $(SRC_BASE_DIR)/,$(SRCS_BASE))
 INCLUDES = $(addprefix $(INCLUDE_BASE_DIR)/,$(INCLUDES_BASE))
 OBJS = $(notdir $(SRCS:.c=.o))
