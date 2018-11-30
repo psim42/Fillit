@@ -6,7 +6,7 @@
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 14:24:08 by psim              #+#    #+#             */
-/*   Updated: 2018/11/30 09:12:21 by fwerner          ###   ########.fr       */
+/*   Updated: 2018/11/30 11:15:50 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ t_ttrm			**fd_to_ttrm_tab(int fd);
 int				fill_ttrm(int fd, t_ttrm **new_ttrm);
 
 /*
-** Retourne 1 si le tetrominos est valide ou 0 s'il ne l'est pas.
+** Retourne 1 si les blocs du tetrominos representent un tetrominos valide,
+** 0 sinon.
+** Le tetrominos ne doit contenir que des caracteres '.' et '#'.
 */
-int				check_ttrm(t_ttrm *ttrm);
+int				check_ttrm_block(t_ttrm *ttrm);
 
 /*
 ** Free chaque tetrominos d'un tableau termine par NULL individuellement
