@@ -6,10 +6,13 @@
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 16:49:30 by psim              #+#    #+#             */
-/*   Updated: 2018/11/30 16:49:34 by psim             ###   ########.fr       */
+/*   Updated: 2018/11/30 17:01:43 by psim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+#include "fillit.h"
+#include <stdlib.h>
 
 t_ttrm	**fd_to_ttrm_tab(int fd)
 {
