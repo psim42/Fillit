@@ -6,7 +6,7 @@
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 14:24:08 by psim              #+#    #+#             */
-/*   Updated: 2018/11/30 11:15:50 by fwerner          ###   ########.fr       */
+/*   Updated: 2018/11/30 12:06:53 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ t_ttrm			**fd_to_ttrm_tab(int fd);
 ** le prochain tetrominos contenu dans le fd.
 */
 int				fill_ttrm(int fd, t_ttrm **new_ttrm);
+
+/*
+** Normalise le tetrominos en deplacant ses blocs le plus en haut a gauche
+** possible tout en conservant sa forme.
+*/
+void			normalize_ttrm(t_ttrm *ttrm);
 
 /*
 ** Retourne 1 si les blocs du tetrominos representent un tetrominos valide,
