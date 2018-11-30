@@ -6,7 +6,7 @@
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 14:24:08 by psim              #+#    #+#             */
-/*   Updated: 2018/11/30 12:06:53 by fwerner          ###   ########.fr       */
+/*   Updated: 2018/11/30 13:41:28 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ typedef struct	s_ttrm
 t_ttrm			**fd_to_ttrm_tab(int fd);
 
 /*
-** Retourne 1 en cas de succes et 0 en cas d'echec, alloue
-** et remplie le tetrominos passe em parametre avec
+** Alloue et remplie le tetrominos passe em parametre avec
 ** le prochain tetrominos contenu dans le fd.
+** Retourne 1 ou 0 si le tetrominos a pu etre lu et est valide, 1 si le fd
+** contient encore des caracteres, 0 sinon. Retourne -1 en cas d'erreur.
 */
 int				fill_ttrm(int fd, t_ttrm **new_ttrm);
 
