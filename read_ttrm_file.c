@@ -1,14 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dCheck.c                                           :+:      :+:    :+:   */
+/*   read_ttrm_file.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 15:14:37 by psim              #+#    #+#             */
-/*   Updated: 2018/11/30 15:49:11 by psim             ###   ########.fr       */
+/*   Created: 2018/11/30 16:49:30 by psim              #+#    #+#             */
+/*   Updated: 2018/11/30 16:49:34 by psim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 t_ttrm	**fd_to_ttrm_tab(int fd)
 {
@@ -20,15 +21,15 @@ t_ttrm	**fd_to_ttrm_tab(int fd)
 	if (tab == NULL)
 		return (NULL);
 	i = 0;
-	while (fill_ttrm(fd, &(tab[i])))
+	while ((ret = fill_ttrm(fd, &(tab[i]))) == 1 && i < 26)
+		i++;
+	if (ret == -1 || i == 26)
 	{
-		ret = read(fd, buf, 1);
-		if (ret = 0)
-			return (0);
-
-/*
-a finir
-*/
+		free_ttrm_tab(tab);
+		return (NULL);
+	}
+	return (tab);
+}
 
 static int	check_line(char *str)
 {
