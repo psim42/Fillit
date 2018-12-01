@@ -6,7 +6,7 @@
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 16:49:30 by psim              #+#    #+#             */
-/*   Updated: 2018/12/01 14:22:07 by psim             ###   ########.fr       */
+/*   Updated: 2018/12/01 15:20:39 by psim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int		fill_ttrm(int fd, t_ttrm **new_ttrm)
 		ft_bzero(buf, 5);
 	}
 	ret = read(fd, buf, 1);
-	if (ret == -1 || (buf[0] != '\n' && ret > 0))
+	if (ret == -1 || (buf[0] != '\n' && ret > 0) || !check_ttrm_block(*new_ttrm))
 	{
 		ft_memdel((void **)new_ttrm);
 		return (-1);
