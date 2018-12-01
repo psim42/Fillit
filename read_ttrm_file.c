@@ -6,7 +6,7 @@
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 16:49:30 by psim              #+#    #+#             */
-/*   Updated: 2018/12/01 15:20:39 by psim             ###   ########.fr       */
+/*   Updated: 2018/12/01 15:48:55 by psim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ t_ttrm	**fd_to_ttrm_tab(int fd)
 {
 	int ret;
 	int i;
-	char buf[1];
 
 	t_ttrm **tab = (t_ttrm**)ft_memalloc(sizeof(t_ttrm*) * 27);
 	if (tab == NULL)
@@ -51,7 +50,6 @@ static int	check_line(char *str)
 
 int		fill_ttrm(int fd, t_ttrm **new_ttrm)
 {
-	int		i;
 	int		y;
 	char	buf[5];
 	int		ret;
