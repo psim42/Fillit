@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   print_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 12:18:56 by psim              #+#    #+#             */
-/*   Updated: 2018/12/01 14:54:45 by psim             ###   ########.fr       */
+/*   Created: 2018/12/01 14:48:22 by psim              #+#    #+#             */
+/*   Updated: 2018/12/01 14:52:26 by psim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "fillit.h"
 
-void		ft_print_params(int size, char **tab)
+void	print_map(t_map *map)
 {
-	int i;
-
-	if (tab == NULL)
-		return ;
-	i = 0;
-	while (i < size)
-	{
-		ft_putendl(tab[i]);
-		i++;
-	}
+	if (map)
+		ft_print_params(map->size, map->tab);
 }

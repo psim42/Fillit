@@ -6,7 +6,7 @@
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 14:24:08 by psim              #+#    #+#             */
-/*   Updated: 2018/11/30 13:41:28 by fwerner          ###   ########.fr       */
+/*   Updated: 2018/12/01 14:48:16 by psim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@ typedef struct	s_ttrm
 {
 	char tab[4][4];
 }				t_ttrm;
+
+typedef struct	s_map
+{
+	char	**tab;
+	int		size;
+}				t_map;
 
 /*
 ** Retourne un tableau de pointeur de tetrominos termine par NULL
@@ -51,5 +57,27 @@ int				check_ttrm_block(t_ttrm *ttrm);
 ** puis free le tableau en lui-meme.
 */
 void			free_ttrm_tab(t_ttrm **ttrm_tab);
+
+/*
+** Essaye d'ajouter le tetrominos a la map a la position x, y. Si l'ajout est
+** reussi retourne 1, sinon retourne 0.
+*/
+int				emplace_ttrm(t_map *map, t_ttrm *ttrm, int x, int y);
+//verifier uniquement le char '.'
+/*
+** Free le tableau de chaine de charactere de la map.
+*/
+void			free_map(t_map *map);
+
+/*
+** Affiche la map passee en parametre.
+*/
+void			print_map(t_map *map);
+
+/*
+** Retourne un pointeur sur t_map representant la resolution du fillit avec les
+** tetrominos donnes ou retourne NULL en cas d'erreur.
+*/
+t_map			*resolve_fillit(t_ttrm **ttrm_tab);
 
 #endif
