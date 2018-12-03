@@ -6,11 +6,12 @@
 /*   By: fwerner <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 11:09:54 by fwerner           #+#    #+#             */
-/*   Updated: 2018/12/03 11:12:22 by fwerner          ###   ########.fr       */
+/*   Updated: 2018/12/03 14:08:57 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "libft.h"
 #include "fillit.h"
 
 void	free_map_content(t_map *map)
