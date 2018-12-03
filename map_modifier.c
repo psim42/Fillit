@@ -6,7 +6,7 @@
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 14:28:59 by psim              #+#    #+#             */
-/*   Updated: 2018/12/03 14:36:44 by psim             ###   ########.fr       */
+/*   Updated: 2018/12/03 14:54:08 by psim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	abort_ttrm(t_map *map, t_ttrm *ttrm, t_coord cd, int i)
 	int tx;
 	int ty;
 
-	tx = 0;
 	ty = 0;
 	while (ty < 4 && i)
 	{
+		tx = 0;
 		while (tx < 4 && i)
 		{
 			if (ttrm->tab[ty][tx] != '.' && map->tab[cd.y + ty][cd.x + tx] != '.')
@@ -54,11 +54,11 @@ int			insert_ttrm(t_map *map, t_ttrm *ttrm, int x, int y)
 	int ty;
 	int i;
 
-	tx = 0;
 	ty = 0;
 	i = 0;
 	while (ty < 4)
 	{
+		tx = 0;
 		while (tx < 4)
 		{
 			if (ttrm->tab[ty][tx] != '.' && (x + tx >= map->size
