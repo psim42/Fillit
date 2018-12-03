@@ -6,23 +6,27 @@
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 13:07:03 by psim              #+#    #+#             */
-/*   Updated: 2018/12/03 13:50:32 by psim             ###   ########.fr       */
+/*   Updated: 2018/12/03 14:07:08 by psim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "fillit.h"
+#include "libft.h"
 
 static void	abort_ttrm(t_map *map, t_ttrm *ttrm, t_coord cd, int i)
 {
 	int tx;
 	int ty;
-	int i;
 
+	tx = 0;
+	ty = 0;
 	while (ty < 4 && i)
 	{
 		while (tx < 4 && i)
 		{
-			if (ttrm->tab[ty][tx] != '.' && map->tab[y + ty][x + tx] != '.')
+			if (ttrm->tab[ty][tx] != '.' && map->tab[cd.y + ty][cd.x + tx] != '.')
 			{
-				map->tab[y + ty][x + tx] = '.';
+				map->tab[cd.y + ty][cd.x + tx] = '.';
 				i--;
 			}
 			tx++;
@@ -31,12 +35,12 @@ static void	abort_ttrm(t_map *map, t_ttrm *ttrm, t_coord cd, int i)
 	}
 }
 
-static void	coord_struct(int x, int y)
+t_coord		coord_struct(int x, int y)
 {
 	t_coord cd;
 
-	cd->x = x;
-	cd->y = y;
+	cd.x = x;
+	cd.y = y;
 	return (cd);
 }
 
@@ -61,12 +65,12 @@ int			insert_ttrm(t_map *map, t_ttrm *ttrm, int x, int y)
 			}
 			if (ttrm->tab[ty][tx] != '.' && map->tab[y + ty][x + tx] == '.')
 			{
-				map->tab[y + ty][x + tx] = ttrm->tab[tx];
+				map->tab[y + ty][x + tx] = ttrm->tab[ty][tx];
 				i++;
 			}
 			else
 			{
-				abort_ttrm(map, ttr, coord_struct(x, y), i);
+				abort_ttrm(map, ttrm, coord_struct(x, y), i);
 				return (0);
 			}
 			tx++;
