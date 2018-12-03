@@ -6,14 +6,14 @@
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 13:07:03 by psim              #+#    #+#             */
-/*   Updated: 2018/12/03 14:07:08 by psim             ###   ########.fr       */
+/*   Updated: 2018/12/03 14:21:00 by psim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
 
-static void	abort_ttrm(t_map *map, t_ttrm *ttrm, t_coord cd, int i)
+void	abort_ttrm(t_map *map, t_ttrm *ttrm, t_coord cd, int i)
 {
 	int tx;
 	int ty;
