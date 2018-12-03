@@ -6,7 +6,7 @@
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 16:49:30 by psim              #+#    #+#             */
-/*   Updated: 2018/12/01 15:48:55 by psim             ###   ########.fr       */
+/*   Updated: 2018/12/03 15:41:53 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,34 @@
 #include "fillit.h"
 #include <stdlib.h>
 #include <unistd.h>
+
+/*
+** Remplace les blocs du tetrominos par une lettre.
+*/
+
+static void		ttrm_bloc_to_letter(t_ttrm *ttrm, char letter)
+{
+	int		x;
+	int		y;
+
+	if (ttrm != NULL)
+	{
+		y = 0;
+		while (y < 4)
+		{
+			x = 0;
+			while (x < 4)
+			{
+				if (ttrm->tab[y][x] != '.')
+				{
+					ttrm->tab[y][x] = letter;
+				}
+				++x;
+			}
+			++y;
+		}
+	}
+}
 
 t_ttrm	**fd_to_ttrm_tab(int fd)
 {
@@ -25,12 +53,16 @@ t_ttrm	**fd_to_ttrm_tab(int fd)
 		return (NULL);
 	i = 0;
 	while ((ret = fill_ttrm(fd, &(tab[i]))) == 1 && i < 26)
+	{
+		ttrm_bloc_to_letter(tab[i], 'A' + i);
 		i++;
+	}
 	if (ret == -1 || i == 26)
 	{
 		free_ttrm_tab(tab);
 		return (NULL);
 	}
+	ttrm_bloc_to_letter(tab[i], 'A' + i);
 	return (tab);
 }
 

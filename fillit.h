@@ -6,7 +6,7 @@
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 14:24:08 by psim              #+#    #+#             */
-/*   Updated: 2018/12/03 15:30:33 by fwerner          ###   ########.fr       */
+/*   Updated: 2018/12/03 15:37:44 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ typedef struct	s_coord
 
 /*
 ** Retourne un tableau de pointeur de tetrominos termine par NULL
-** ou NULL si erreur.
+** ou NULL si erreur. Les blocs des tetrominos sont remplaces par des lettres
+** selon leur place dans la liste.
 */
 t_ttrm			**fd_to_ttrm_tab(int fd);
 
