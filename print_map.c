@@ -6,7 +6,7 @@
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 14:48:22 by psim              #+#    #+#             */
-/*   Updated: 2018/12/03 14:12:42 by psim             ###   ########.fr       */
+/*   Updated: 2018/12/03 15:00:54 by psim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	print_map(t_map *map)
 		while (x < map->size)
 		{
 			ft_putchar(map->tab[y][x]);
-			ft_putchar('\n');
 			x++;
 		}
+		ft_putchar('\n');
 		y++;
 	}
 }
