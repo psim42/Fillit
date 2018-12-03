@@ -6,7 +6,7 @@
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 14:24:08 by psim              #+#    #+#             */
-/*   Updated: 2018/12/03 13:59:08 by psim             ###   ########.fr       */
+/*   Updated: 2018/12/03 15:30:33 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void			free_ttrm_tab(t_ttrm **ttrm_tab);
 ** reussi retourne 1, sinon retourne 0.
 */
 int				insert_ttrm(t_map *map, t_ttrm *ttrm, int x, int y);
-//verifier uniquement le char '.'
 
 /*
 ** Supprime le tetrominos dans la map a la position donnee.

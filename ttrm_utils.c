@@ -6,7 +6,7 @@
 /*   By: fwerner <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:49:48 by fwerner           #+#    #+#             */
-/*   Updated: 2018/11/30 13:25:03 by fwerner          ###   ########.fr       */
+/*   Updated: 2018/12/03 15:32:21 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 ** Retourne la taille de l'espace entre le haut du tetrominos et
 ** le bord du tableau qui le contient.
 */
+
 static int		get_ttrm_top_offset(t_ttrm *ttrm)
 {
 	int		top_off;
@@ -44,6 +45,7 @@ static int		get_ttrm_top_offset(t_ttrm *ttrm)
 ** Retourne la taille de l'espace entre la gauche du tetrominos et
 ** le bord du tableau qui le contient.
 */
+
 static int		get_ttrm_left_offset(t_ttrm *ttrm)
 {
 	int		left_off;
@@ -83,8 +85,8 @@ void			normalize_ttrm(t_ttrm *ttrm)
 		{
 			if ((x_ind + left_off) < 4 && (y_ind + top_off) < 4)
 			{
-				ttrm->tab[y_ind][x_ind]
-					= ttrm->tab[y_ind + top_off][x_ind + left_off];
+				ttrm->tab[y_ind][x_ind] =
+					ttrm->tab[y_ind + top_off][x_ind + left_off];
 			}
 			else
 				ttrm->tab[y_ind][x_ind] = '.';

@@ -6,7 +6,7 @@
 /*   By: fwerner <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 11:16:29 by fwerner           #+#    #+#             */
-/*   Updated: 2018/12/03 13:50:53 by fwerner          ###   ########.fr       */
+/*   Updated: 2018/12/03 15:30:12 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 #include "libft.h"
 #include "fillit.h"
 
-static void		print_error()
+static void		print_error(void)
 {
 	ft_putendl("error");
 }
 
-static void		print_usage()
+static void		print_usage(void)
 {
 	ft_putendl("usage: fillit list_of_tetrominos_file_name");
 }
