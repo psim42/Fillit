@@ -6,7 +6,7 @@
 /*   By: fwerner <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 11:09:54 by fwerner           #+#    #+#             */
-/*   Updated: 2018/12/03 14:08:57 by fwerner          ###   ########.fr       */
+/*   Updated: 2018/12/03 15:10:45 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,32 @@
 #include "libft.h"
 #include "fillit.h"
 
-void	free_map_content(t_map *map)
+/*
+** Initialise la map avec des points.
+*/
+
+static void		dot_init_map(t_map *map)
+{
+	int		x;
+	int		y;
+
+	if (map != NULL)
+	{
+		y = 0;
+		while (y < map->size)
+		{
+			x = 0;
+			while (x < map->size)
+			{
+				map->tab[y][x] = '.';
+				++x;
+			}
+			++y;
+		}
+	}
+}
+
+void			free_map_content(t_map *map)
 {
 	int		idx;
 
@@ -34,7 +59,7 @@ void	free_map_content(t_map *map)
 	}
 }
 
-int		resize_map(t_map *map, int new_size)
+int				resize_map(t_map *map, int new_size)
 {
 	int		idx;
 
@@ -56,6 +81,7 @@ int		resize_map(t_map *map, int new_size)
 			++idx;
 		}
 		map->size = new_size;
+		dot_init_map(map);
 		return (1);
 	}
 	return (0);
