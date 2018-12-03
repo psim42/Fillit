@@ -6,7 +6,7 @@
 /*   By: fwerner <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 10:50:44 by fwerner           #+#    #+#             */
-/*   Updated: 2018/11/29 13:40:21 by fwerner          ###   ########.fr       */
+/*   Updated: 2018/12/01 09:38:12 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static t_fd_inf		*find_fd_inf(t_list **files_lst,
 	{
 		((t_fd_inf*)(to_find->content))->buf_len = 0;
 		((t_fd_inf*)(to_find->content))->buf =
-			(char*)ft_memalloc(BUFF_SIZE);
+			(char*)ft_memalloc(sizeof(char) * BUFF_SIZE);
 		if (((t_fd_inf*)(to_find->content))->buf == NULL)
 		{
 			ft_lstremove(files_lst, to_find, ft_deflstdel);
@@ -104,7 +104,7 @@ static int			add_str_to_lst(t_list **lst, char *buf, ssize_t *buf_len)
 	else
 		ft_lstaddafter(ft_lstlast(*lst), new_elem);
 	ft_memmove(buf, buf + (endl_found == TRUE ? str_len + 1 : 0),
-			*buf_len - str_len);
+			*buf_len - str_len - (endl_found == TRUE ? 1 : 0));
 	*buf_len -= (str_len + (endl_found == TRUE ? 1 : 0));
 	return (endl_found == TRUE ? 2 : 1);
 }
@@ -117,7 +117,7 @@ int					get_next_line(const int fd, char **line)
 
 	if (line == NULL)
 		return (find_or_del_buffer(fd, TRUE) == NULL ? -1 : 0);
-	if ((fd_inf = find_or_del_buffer(fd, FALSE)) == NULL)
+	if (BUFF_SIZE <= 0 || (fd_inf = find_or_del_buffer(fd, FALSE)) == NULL)
 		return (-1);
 	str_lst = NULL;
 	add_ret = add_str_to_lst(&str_lst, fd_inf->buf, &(fd_inf->buf_len));
