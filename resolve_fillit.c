@@ -6,11 +6,12 @@
 /*   By: fwerner <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 08:40:47 by fwerner           #+#    #+#             */
-/*   Updated: 2018/12/03 11:49:03 by fwerner          ###   ########.fr       */
+/*   Updated: 2018/12/03 14:16:50 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "libft.h"
 #include "fillit.h"
 
 /*
@@ -86,7 +87,7 @@ t_map			*resolve_fillit(t_ttrm **ttrm_tab)
 		++cur_map_size;
 		if (resize_map(map, cur_map_size) == 0)
 		{
-			ft_memdel(&map);
+			ft_memdel((void**)(&map));
 			return (NULL);
 		}
 	}
