@@ -6,7 +6,7 @@
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 14:28:59 by psim              #+#    #+#             */
-/*   Updated: 2018/12/03 14:36:44 by psim             ###   ########.fr       */
+/*   Updated: 2018/12/03 15:08:18 by psim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@ void	abort_ttrm(t_map *map, t_ttrm *ttrm, t_coord cd, int i)
 	int tx;
 	int ty;
 
-	tx = 0;
 	ty = 0;
 	while (ty < 4 && i)
 	{
+		tx = 0;
 		while (tx < 4 && i)
 		{
 			if (ttrm->tab[ty][tx] != '.' && map->tab[cd.y + ty][cd.x + tx] != '.')
 			{
 				map->tab[cd.y + ty][cd.x + tx] = '.';
-				i--;
 			}
 			tx++;
+			i--;
 		}
 		ty++;
 	}
@@ -48,17 +48,17 @@ void	remove_ttrm(t_map *map, t_ttrm *ttrm, int x, int y)
 	abort_ttrm(map, ttrm, coord_struct(x, y), 16);
 }
 
-int			insert_ttrm(t_map *map, t_ttrm *ttrm, int x, int y)
+int		insert_ttrm(t_map *map, t_ttrm *ttrm, int x, int y)
 {
 	int tx;
 	int ty;
 	int i;
 
-	tx = 0;
 	ty = 0;
 	i = 0;
 	while (ty < 4)
 	{
+		tx = 0;
 		while (tx < 4)
 		{
 			if (ttrm->tab[ty][tx] != '.' && (x + tx >= map->size
@@ -70,14 +70,14 @@ int			insert_ttrm(t_map *map, t_ttrm *ttrm, int x, int y)
 			if (ttrm->tab[ty][tx] != '.' && map->tab[y + ty][x + tx] == '.')
 			{
 				map->tab[y + ty][x + tx] = ttrm->tab[ty][tx];
-				i++;
 			}
-			else
+			else if (ttrm->[ty][tx] != '.')
 			{
 				abort_ttrm(map, ttrm, coord_struct(x, y), i);
 				return (0);
 			}
 			tx++;
+			i++;
 		}
 		ty++;
 	}
