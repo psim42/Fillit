@@ -1,17 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insert_ttrm.c                                      :+:      :+:    :+:   */
+/*   map_modifier.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/03 13:07:03 by psim              #+#    #+#             */
-/*   Updated: 2018/12/03 14:21:00 by psim             ###   ########.fr       */
+/*   Created: 2018/12/03 14:28:59 by psim              #+#    #+#             */
+/*   Updated: 2018/12/03 14:33:50 by psim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
+
+void	remove_ttrm(t_map *map, t_ttrm *ttrm, int x, int y)
+{
+	abort_ttrm(map, ttrm, coord_struct(x, y), 16);
+}
 
 void	abort_ttrm(t_map *map, t_ttrm *ttrm, t_coord cd, int i)
 {
