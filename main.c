@@ -6,55 +6,49 @@
 /*   By: fwerner <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 11:16:29 by fwerner           #+#    #+#             */
-/*   Updated: 2018/12/01 12:45:36 by fwerner          ###   ########.fr       */
+/*   Updated: 2018/12/03 13:50:53 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <fcntl.h>
+#include <unistd.h>
+#include "libft.h"
 #include "fillit.h"
 
-int		main(int argc, char **argv)
+static void		print_error()
 {
-	(void)argc;
-	int fd = open(argv[1], O_RDONLY);
-	t_ttrm **ttrm_tab = fd_to_ttrm_tab(fd);
+	ft_putendl("error");
+}
 
-	/*ttrm_tab = malloc(sizeof(*ttrm_tab) * 3);
-	ttrm_tab[0] = malloc(sizeof(**ttrm_tab));
-	ttrm_tab[1] = malloc(sizeof(**ttrm_tab));
-	ttrm_tab[2] = NULL;
+static void		print_usage()
+{
+	ft_putendl("usage: fillit list_of_tetrominos_file_name");
+}
 
-	for (int lol = 0; lol < 2; ++lol)
+int				main(int argc, char **argv)
+{
+	int		fd;
+	t_ttrm	**ttrm_tab;
+	t_map	*result;
+
+	if (argc == 2)
 	{
-		for (int i = 0; i < 4; ++i)
+		if ((fd = open(argv[1], O_RDONLY)) >= 0)
 		{
-			for (int j = 0; j < 4; ++j)
+			ttrm_tab = fd_to_ttrm_tab(fd);
+			close(fd);
+			if (ttrm_tab != NULL)
 			{
-				ttrm_tab[lol]->tab[i][j] = 'A' + lol;
-			}
-		}
-	}*/
-	if (ttrm_tab == NULL)
-	{
-		printf("NULL\n");
-	}
-	else
-	{
-		for (int lol = 0; ttrm_tab[lol] != NULL; ++lol)
-		{
-			for (int i = 0; i < 4; ++i)
-			{
-				for (int j = 0; j < 4; ++j)
+				if ((result = resolve_fillit(ttrm_tab)) != NULL)
 				{
-					printf("%c", ttrm_tab[lol]->tab[i][j]);
+					print_map(result);
+					return (0);
 				}
-				printf("\n");
 			}
-			printf("\n");
 		}
+		print_error();
+		return (0);
 	}
-	free_ttrm_tab(ttrm_tab);
-
+	print_usage();
 	return (0);
 }

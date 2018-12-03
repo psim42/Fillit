@@ -6,7 +6,7 @@
 #    By: fwerner <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:25:16 by fwerner           #+#    #+#              #
-#    Updated: 2018/12/01 16:15:45 by fwerner          ###   ########.fr        #
+#    Updated: 2018/12/03 13:57:43 by fwerner          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,11 @@ INCLUDE_BASE_DIR = .
 SRC_BASE_DIR = .
 INCLUDES_BASE = fillit.h
 SRCS_BASE = check_ttrm.c \
+			insert_ttrm.c \
+			map_utils.c \
 			print_map.c \
 			read_ttrm_file.c \
+			resolve_fillit.c \
 			ttrm_utils.c \
 			main.c
 SRCS = $(addprefix $(SRC_BASE_DIR)/,$(SRCS_BASE))
