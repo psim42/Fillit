@@ -6,7 +6,7 @@
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 14:24:08 by psim              #+#    #+#             */
-/*   Updated: 2018/12/01 14:48:16 by psim             ###   ########.fr       */
+/*   Updated: 2018/12/03 11:48:48 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void			free_ttrm_tab(t_ttrm **ttrm_tab);
 ** Essaye d'ajouter le tetrominos a la map a la position x, y. Si l'ajout est
 ** reussi retourne 1, sinon retourne 0.
 */
-int				emplace_ttrm(t_map *map, t_ttrm *ttrm, int x, int y);
+int				insert_ttrm(t_map *map, t_ttrm *ttrm, int x, int y);
 //verifier uniquement le char '.'
 /*
 ** Free le tableau de chaine de charactere de la map.
@@ -79,5 +79,16 @@ void			print_map(t_map *map);
 ** tetrominos donnes ou retourne NULL en cas d'erreur.
 */
 t_map			*resolve_fillit(t_ttrm **ttrm_tab);
+
+/*
+** Free le contenu de la map (tableau de string uniquement) et met sa size a 0.
+** Si un element du tableau vaut NULL le free s'arrete.
+*/
+void			free_map_content(t_map *map);
+
+/*
+** Change la taille de la map passee en parametre.
+*/
+int				resize_map(t_map *map, int new_size);
 
 #endif
