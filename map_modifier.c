@@ -6,7 +6,7 @@
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 14:28:59 by psim              #+#    #+#             */
-/*   Updated: 2018/12/03 15:00:06 by psim             ###   ########.fr       */
+/*   Updated: 2018/12/03 15:08:18 by psim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	remove_ttrm(t_map *map, t_ttrm *ttrm, int x, int y)
 	abort_ttrm(map, ttrm, coord_struct(x, y), 16);
 }
 
-int			insert_ttrm(t_map *map, t_ttrm *ttrm, int x, int y)
+int		insert_ttrm(t_map *map, t_ttrm *ttrm, int x, int y)
 {
 	int tx;
 	int ty;
@@ -71,7 +71,7 @@ int			insert_ttrm(t_map *map, t_ttrm *ttrm, int x, int y)
 			{
 				map->tab[y + ty][x + tx] = ttrm->tab[ty][tx];
 			}
-			else
+			else if (ttrm->[ty][tx] != '.')
 			{
 				abort_ttrm(map, ttrm, coord_struct(x, y), i);
 				return (0);
