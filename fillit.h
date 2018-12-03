@@ -6,7 +6,7 @@
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 14:24:08 by psim              #+#    #+#             */
-/*   Updated: 2018/12/03 12:17:52 by fwerner          ###   ########.fr       */
+/*   Updated: 2018/12/03 13:59:08 by psim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ typedef struct	s_map
 	char	**tab;
 	int		size;
 }				t_map;
+
+typedef struct	s_coord
+{
+	int x;
+	int y;
+}				t_coord;
 
 /*
 ** Retourne un tableau de pointeur de tetrominos termine par NULL
