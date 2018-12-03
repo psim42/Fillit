@@ -6,7 +6,7 @@
 /*   By: fwerner <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 14:22:06 by fwerner           #+#    #+#             */
-/*   Updated: 2018/11/29 16:11:58 by psim             ###   ########.fr       */
+/*   Updated: 2018/12/03 15:25:51 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,6 @@ char			*ft_lststrjoin(t_list *lst);
 void			ft_deflstdel(void *content, size_t content_size);
 
 int				get_next_line(const int fd, char **line);
-void			ft_print_params(int size, char **tab);
+int				ft_sqrtru(int nb);
 
 #endif

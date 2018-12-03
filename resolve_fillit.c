@@ -6,7 +6,7 @@
 /*   By: fwerner <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 08:40:47 by fwerner           #+#    #+#             */
-/*   Updated: 2018/12/03 14:16:50 by fwerner          ###   ########.fr       */
+/*   Updated: 2018/12/03 15:22:54 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int		get_min_fillit_square(t_ttrm **tab)
 			++idx;
 		}
 	}
-	return (size);
+	return (ft_sqrtru(size));
 }
 
 /*
