@@ -6,7 +6,7 @@
 /*   By: fwerner <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 11:16:29 by fwerner           #+#    #+#             */
-/*   Updated: 2018/12/03 15:30:12 by fwerner          ###   ########.fr       */
+/*   Updated: 2018/12/04 09:20:13 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,19 @@ static void		print_usage(void)
 	ft_putendl("usage: fillit list_of_tetrominos_file_name");
 }
 
+static void		free_map_and_ttrm_list(t_map *map, t_ttrm **ttrm_tab)
+{
+	if (map != NULL)
+	{
+		free_map_content(map);
+		ft_memdel((void**)(&map));
+	}
+	if (ttrm_tab != NULL)
+	{
+		free_ttrm_tab(ttrm_tab);
+	}
+}
+
 int				main(int argc, char **argv)
 {
 	int		fd;
@@ -38,13 +51,13 @@ int				main(int argc, char **argv)
 			ttrm_tab = fd_to_ttrm_tab(fd);
 			close(fd);
 			if (ttrm_tab != NULL)
-			{
 				if ((result = resolve_fillit(ttrm_tab)) != NULL)
 				{
 					print_map(result);
+					free_map_and_ttrm_list(result, ttrm_tab);
 					return (0);
 				}
-			}
+			free_map_and_ttrm_list(NULL, ttrm_tab);
 		}
 		print_error();
 		return (0);

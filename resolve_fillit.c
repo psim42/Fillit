@@ -6,7 +6,7 @@
 /*   By: fwerner <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 08:40:47 by fwerner           #+#    #+#             */
-/*   Updated: 2018/12/03 15:22:54 by fwerner          ###   ########.fr       */
+/*   Updated: 2018/12/04 09:17:38 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,10 @@ t_map			*resolve_fillit(t_ttrm **ttrm_tab)
 	if ((map = (t_map*)ft_memalloc(sizeof(*map))) == NULL)
 		return (NULL);
 	if (resize_map(map, cur_map_size) == 0)
+	{
+		ft_memdel((void**)(&map));
 		return (NULL);
+	}
 	while (try_fillit_map(map, ttrm_tab) == 0)
 	{
 		++cur_map_size;
