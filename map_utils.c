@@ -6,7 +6,7 @@
 /*   By: fwerner <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 11:09:54 by fwerner           #+#    #+#             */
-/*   Updated: 2018/12/04 09:18:00 by fwerner          ###   ########.fr       */
+/*   Updated: 2018/12/04 13:28:55 by psim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int				resize_map(t_map *map, int new_size)
 		idx = 0;
 		while (idx < new_size)
 		{
-			(map->tab)[idx] = (char*)ft_memalloc(sizeof(char) * new_size);
+			(map->tab)[idx] = (char*)malloc(sizeof(char) * new_size);
 			if ((map->tab)[idx] == NULL)
 			{
 				free_map_content(map);
