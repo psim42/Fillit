@@ -6,7 +6,7 @@
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 16:49:30 by psim              #+#    #+#             */
-/*   Updated: 2018/12/04 13:41:36 by psim             ###   ########.fr       */
+/*   Updated: 2018/12/04 13:53:37 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,15 +83,13 @@ static int		check_line(char *str)
 	return (1);
 }
 
-int				fill_ttrm(int fd, t_ttrm **new_ttrm)
+static int		read_ttrm_lines(int fd, t_ttrm **new_ttrm)
 {
-	int		y;
 	char	buf[5];
 	int		ret;
+	int		y;
 
 	y = 0;
-	if (!(*new_ttrm = (t_ttrm*)ft_memalloc(sizeof(t_ttrm) * 1)))
-		return (-1);
 	while (y < 4)
 	{
 		ft_bzero(buf, 5);
@@ -104,8 +102,23 @@ int				fill_ttrm(int fd, t_ttrm **new_ttrm)
 		ft_strncpy((*new_ttrm)->tab[y], buf, 4);
 		y++;
 	}
-	ret = read(fd, buf, 1);
-	if (ret == -1 || (buf[0] != '\n' && ret > 0)
+	return (0);
+}
+
+int				fill_ttrm(int fd, t_ttrm **new_ttrm)
+{
+	char	buf;
+	int		ret;
+
+	if (!(*new_ttrm = (t_ttrm*)ft_memalloc(sizeof(t_ttrm) * 1)))
+		return (-1);
+	if (read_ttrm_lines(fd, new_ttrm) == -1)
+	{
+		ft_memdel((void **)new_ttrm);
+		return (-1);
+	}
+	ret = read(fd, &buf, 1);
+	if (ret == -1 || (buf != '\n' && ret > 0)
 			|| !check_ttrm_block(*new_ttrm))
 	{
 		ft_memdel((void **)new_ttrm);

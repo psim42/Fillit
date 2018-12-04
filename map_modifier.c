@@ -6,7 +6,7 @@
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 14:28:59 by psim              #+#    #+#             */
-/*   Updated: 2018/12/04 13:39:24 by psim             ###   ########.fr       */
+/*   Updated: 2018/12/04 13:44:55 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,29 +60,25 @@ int			insert_ttrm(t_map *map, t_ttrm *ttrm, int x, int y)
 	int ty;
 	int i;
 
-	ty = 0;
+	ty = -1;
 	i = 0;
-	while (ty < ttrm->height)
+	while (++ty < ttrm->height)
 	{
-		tx = 0;
-		while (tx < ttrm->width)
+		tx = -1;
+		while (++tx < ttrm->width)
 		{
 			if (ttrm->tab[ty][tx] != '.')
 			{
 				if (map->tab[y + ty][x + tx] == '.')
-				{
 					map->tab[y + ty][x + tx] = ttrm->tab[ty][tx];
-				}
 				else
 				{
 					abort_ttrm(map, ttrm, coord_struct(x, y), i);
 					return (0);
 				}
 			}
-			tx++;
 			i++;
 		}
-		ty++;
 	}
 	return (1);
 }
