@@ -6,7 +6,7 @@
 /*   By: fwerner <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 11:55:46 by fwerner           #+#    #+#             */
-/*   Updated: 2018/12/04 12:02:05 by fwerner          ###   ########.fr       */
+/*   Updated: 2018/12/04 12:07:24 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@ static int		get_ttrm_right_offset(t_ttrm *ttrm)
 
 void			measure_ttrm(t_ttrm *ttrm)
 {
-	ttrm->width = 4 - get_ttrm_right_offset(ttrm);
-	ttrm->height = 4 - get_ttrm_bot_offset(ttrm);
+	if (ttrm != NULL)
+	{
+		ttrm->width = 4 - get_ttrm_right_offset(ttrm);
+		ttrm->height = 4 - get_ttrm_bot_offset(ttrm);
+	}
 }

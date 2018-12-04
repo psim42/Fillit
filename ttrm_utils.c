@@ -6,7 +6,7 @@
 /*   By: fwerner <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:49:48 by fwerner           #+#    #+#             */
-/*   Updated: 2018/12/03 15:32:21 by fwerner          ###   ########.fr       */
+/*   Updated: 2018/12/04 12:07:55 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int		get_ttrm_top_offset(t_ttrm *ttrm)
 		idx = 0;
 		while (idx < 4)
 		{
-			if (ttrm->tab[top_off][idx] == '#')
+			if (ttrm->tab[top_off][idx] != '.')
 			{
 				return (top_off);
 			}
@@ -57,7 +57,7 @@ static int		get_ttrm_left_offset(t_ttrm *ttrm)
 		idx = 0;
 		while (idx < 4)
 		{
-			if (ttrm->tab[idx][left_off] == '#')
+			if (ttrm->tab[idx][left_off] != '.')
 			{
 				return (left_off);
 			}
