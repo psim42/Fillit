@@ -6,7 +6,7 @@
 #    By: fwerner <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:25:16 by fwerner           #+#    #+#              #
-#    Updated: 2018/12/03 14:27:54 by fwerner          ###   ########.fr        #
+#    Updated: 2018/12/04 12:02:27 by fwerner          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ INCLUDES_BASE = fillit.h
 SRCS_BASE = check_ttrm.c \
 			map_modifier.c \
 			map_utils.c \
+			measure_ttrm.c \
 			print_map.c \
 			read_ttrm_file.c \
 			resolve_fillit.c \

@@ -6,7 +6,7 @@
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 16:49:30 by psim              #+#    #+#             */
-/*   Updated: 2018/12/03 15:41:53 by fwerner          ###   ########.fr       */
+/*   Updated: 2018/12/04 12:04:34 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ t_ttrm	**fd_to_ttrm_tab(int fd)
 	while ((ret = fill_ttrm(fd, &(tab[i]))) == 1 && i < 26)
 	{
 		ttrm_bloc_to_letter(tab[i], 'A' + i);
+		measure_ttrm(tab[i]);
 		i++;
 	}
 	if (ret == -1 || i == 26)

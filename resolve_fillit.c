@@ -6,7 +6,7 @@
 /*   By: fwerner <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 08:40:47 by fwerner           #+#    #+#             */
-/*   Updated: 2018/12/04 09:17:38 by fwerner          ###   ########.fr       */
+/*   Updated: 2018/12/04 12:03:30 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ static int		try_fillit_map(t_map *map, t_ttrm **ttrm_tab)
 	if (*ttrm_tab == NULL)
 		return (1);
 	y = 0;
-	while (y < map->size)
+	while (y <= (map->size - (*ttrm_tab)->height))
 	{
 		x = 0;
-		while (x < map->size)
+		while (x <= (map->size - (*ttrm_tab)->width))
 		{
 			if (insert_ttrm(map, *ttrm_tab, x, y) == 1)
 			{

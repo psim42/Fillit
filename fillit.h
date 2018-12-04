@@ -6,7 +6,7 @@
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 14:24:08 by psim              #+#    #+#             */
-/*   Updated: 2018/12/04 09:13:18 by fwerner          ###   ########.fr       */
+/*   Updated: 2018/12/04 12:01:52 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 
 typedef struct	s_ttrm
 {
-	char tab[4][4];
+	char	tab[4][4];
+	char	width;
+	char	height;
 }				t_ttrm;
 
 typedef struct	s_map
@@ -27,8 +29,8 @@ typedef struct	s_map
 
 typedef struct	s_coord
 {
-	int x;
-	int y;
+	int		x;
+	int		y;
 }				t_coord;
 
 /*
@@ -45,6 +47,11 @@ t_ttrm			**fd_to_ttrm_tab(int fd);
 ** contient encore des caracteres, 0 sinon. Retourne -1 en cas d'erreur.
 */
 int				fill_ttrm(int fd, t_ttrm **new_ttrm);
+
+/*
+** Renseigne la hauteur et la largeur du tetrominos.
+*/
+void			measure_ttrm(t_ttrm *ttrm);
 
 /*
 ** Normalise le tetrominos en deplacant ses blocs le plus en haut a gauche
