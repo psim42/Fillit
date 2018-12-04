@@ -6,7 +6,7 @@
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 14:28:59 by psim              #+#    #+#             */
-/*   Updated: 2018/12/03 15:13:53 by psim             ###   ########.fr       */
+/*   Updated: 2018/12/04 13:10:59 by fwerner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@ void	abort_ttrm(t_map *map, t_ttrm *ttrm, t_coord cd, int i)
 	int tx;
 	int ty;
 
+	if (i == 0)
+		return ;
 	ty = 0;
-	while (ty < 4 && i)
+	while (ty < ttrm->height)
 	{
 		tx = 0;
-		while (tx < 4 && i)
+		while (tx < ttrm->width)
 		{
 			if (ttrm->tab[ty][tx] != '.' && map->tab[cd.y + ty][cd.x + tx] != '.')
 			{
@@ -30,6 +32,8 @@ void	abort_ttrm(t_map *map, t_ttrm *ttrm, t_coord cd, int i)
 			}
 			tx++;
 			i--;
+			if (i == 0)
+				return ;
 		}
 		ty++;
 	}
@@ -56,25 +60,22 @@ int		insert_ttrm(t_map *map, t_ttrm *ttrm, int x, int y)
 
 	ty = 0;
 	i = 0;
-	while (ty < 4)
+	while (ty < ttrm->height)
 	{
 		tx = 0;
-		while (tx < 4)
+		while (tx < ttrm->width)
 		{
-			if (ttrm->tab[ty][tx] != '.' && (x + tx >= map->size
-						|| y + ty >= map->size))
+			if (ttrm->tab[ty][tx] != '.')
 			{
-				abort_ttrm(map, ttrm, coord_struct(x, y), i);
-				return (0);
-			}
-			if (ttrm->tab[ty][tx] != '.' && map->tab[y + ty][x + tx] == '.')
-			{
-				map->tab[y + ty][x + tx] = ttrm->tab[ty][tx];
-			}
-			else if (ttrm->tab[ty][tx] != '.')
-			{
-				abort_ttrm(map, ttrm, coord_struct(x, y), i);
-				return (0);
+				if (map->tab[y + ty][x + tx] == '.')
+				{
+					map->tab[y + ty][x + tx] = ttrm->tab[ty][tx];
+				}
+				else
+				{
+					abort_ttrm(map, ttrm, coord_struct(x, y), i);
+					return (0);
+				}
 			}
 			tx++;
 			i++;
