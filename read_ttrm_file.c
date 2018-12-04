@@ -6,7 +6,7 @@
 /*   By: psim <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 16:49:30 by psim              #+#    #+#             */
-/*   Updated: 2018/12/04 13:26:50 by psim             ###   ########.fr       */
+/*   Updated: 2018/12/04 13:41:36 by psim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ static void		ttrm_bloc_to_letter(t_ttrm *ttrm, char letter)
 	}
 }
 
-t_ttrm	**fd_to_ttrm_tab(int fd)
+t_ttrm			**fd_to_ttrm_tab(int fd)
 {
 	int		ret;
 	int		i;
 	t_ttrm	**tab;
 
-	tab	= (t_ttrm**)ft_memalloc(sizeof(t_ttrm*) * 27);
+	tab = (t_ttrm**)ft_memalloc(sizeof(t_ttrm*) * 27);
 	if (tab == NULL)
 		return (NULL);
 	i = 0;
@@ -69,7 +69,7 @@ t_ttrm	**fd_to_ttrm_tab(int fd)
 	return (tab);
 }
 
-static int	check_line(char *str)
+static int		check_line(char *str)
 {
 	int i;
 
@@ -83,12 +83,11 @@ static int	check_line(char *str)
 	return (1);
 }
 
-int		fill_ttrm(int fd, t_ttrm **new_ttrm)
+int				fill_ttrm(int fd, t_ttrm **new_ttrm)
 {
 	int		y;
 	char	buf[5];
 	int		ret;
-
 
 	y = 0;
 	if (!(*new_ttrm = (t_ttrm*)ft_memalloc(sizeof(t_ttrm) * 1)))
@@ -106,7 +105,8 @@ int		fill_ttrm(int fd, t_ttrm **new_ttrm)
 		y++;
 	}
 	ret = read(fd, buf, 1);
-	if (ret == -1 || (buf[0] != '\n' && ret > 0) || !check_ttrm_block(*new_ttrm))
+	if (ret == -1 || (buf[0] != '\n' && ret > 0)
+			|| !check_ttrm_block(*new_ttrm))
 	{
 		ft_memdel((void **)new_ttrm);
 		return (-1);
